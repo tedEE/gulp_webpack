@@ -1,0 +1,52 @@
+include breadcrumb
+include default-params
+include dynamic-element
+include bemto/bemto
+mixin icon(name,mod)
+  - mod = mod || ''//mod дополнительные БЭМ модификатор
+  svg(class="icon icon-" + name + ' ' + mod id=name)
+    use(xlink:href="./img/sprites/svg-symbols.svg#" + name)
+
+mixin lib(path)
+  script(src="../" + path)
+
+mixin debug()
+  .debug
+    div
+      div
+        div
+        div
+        div
+        div
+        div
+        div
+        div
+        div
+        div
+        div
+        div
+        div
+//- nav(stroka)
+//- 	-var arr = stroka.split(' ')
+//- 	-for(i=0;i<=arr.length;i++)
+//- 		-li arr[i]
+
+//- использование +nav('nav', ['наши работы','кантакты','партфолио'], 1)
+mixin nav(className, items, activeItem)
+  nav(class=`${className}`)
+    ul(class=`${className}__list`)
+      each item, ndx in items
+        li(class=`${className}__item` )
+          a(class=`${className}__link` + ((ndx === activeItem) ? ` ${className}__item_active` : '') href='#')=item
+
+mixin social(items, activeItem)
+  .socials
+    ul.social__list
+      each item in items
+        li.social__item
+          +icon(item ,activeItem)
+
+//- mixin icon(name,mod)
+//- 	- mod = mod || ''//mod дополнительные БЭМ модификатор
+//- 	svg(class="icon icon-" + name + ' ' + mod id=name)
+//- 		use(xlink:href="./img/sprites/svg-symbols.svg#" + name)
