@@ -4,10 +4,16 @@
   "description": "",
   "main": "gulpfile.js",
   "dependencies": {
+    "jquery": "^3.4.1",
     "normalize.css": "^8.0.1",
-    "svg4everybody": "^2.1.9"
+    "svg4everybody": "^2.1.9",
+    "vue": "^2.6.10",
+    "vuex": "^3.1.1"
   },
   "devDependencies": {
+    "vue-loader": "^15.7.0",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.10",
     "@babel/core": "^7.2.2",
     "@babel/plugin-transform-classes": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
@@ -42,6 +48,7 @@
     "postcss-load-config": "^2.0.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
+    "smart-grid": "^2.1.2",
     "style-loader": "^0.23.1",
     "stylelint": "^9.9.0",
     "stylelint-config-standard": "^18.2.0",

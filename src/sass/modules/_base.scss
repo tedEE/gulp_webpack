@@ -1,0 +1,6 @@
+body{
+  @include reset();
+}
+.wrapper {
+  @include wrapper-full();
+}

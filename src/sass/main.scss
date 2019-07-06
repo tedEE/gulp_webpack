@@ -1,6 +1,8 @@
 @import "vars";
 @import "mixins";
 @import "fonts";
-@import "base";
-@import "modules/*.sass";
 @import "helpers";
+@import "smart-grid";
+@import "modules/*.scss";
+
+

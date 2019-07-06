@@ -1,9 +1,9 @@
 //include _mixins
 include ./mixin/mixins
-block variables
+block head
 
 doctype html
-html(lang="en")
+html(lang="ru")
   head
 
     title= pageTitle
@@ -16,22 +16,16 @@ html(lang="en")
     if isProduction
       link(rel="stylesheet" href="css/build.css")
     else
-      link(rel="stylesheet" href="css/libs.css")
       link(rel="stylesheet" href="css/main.css")
 
-    block styles
-
-  body.page
-    .page__wrapper
+  body
+    block content
+    .wrapper
       include modules/_header
 
-
-      main.page__content
-        block content
-
-      include modules/_footer
 
     block popups
 
     if !isProduction
       block scripts
+        script(src="./js/index.js")

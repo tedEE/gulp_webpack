@@ -31,6 +31,8 @@ gulp.task("pug", () => {
   const dataFiles = {};
   utils.readFilesToObject("src/pug/data/", dataFiles);
 
+
+
   return gulp
     .src("src/pug/**/!(_)*.pug")
     .pipe(
@@ -38,7 +40,8 @@ gulp.task("pug", () => {
         locals: {
           isProduction,
           ...dataFiles
-        }
+        },
+        pretty:true //иначе html будет выводиться в одну строку
       })
     )
     .on(
@@ -109,16 +112,17 @@ gulp.task("concat:css", function() {
 
 gulp.task("scripts", () => {
   return gulp
-    .src("src/js/**/*.js")
+    .src("src/js/index.js")
     .pipe(
-      webpack(require("./webpack/webpack.dev.js"), compiler, function(
+      webpack(require("./webpack/webpack.dev.js"), compiler, function( //webpack.dev заменить на webpack.prod
         err,
         stats
       ) {
         /* Use stats to do more things if needed */
       })
     )
-    .pipe(gulp.dest("dist"));
+    .pipe(gulp.dest("dist"))
+    .pipe(bs.stream());
 });
 
 gulp.task("watch", () => {
@@ -133,6 +137,8 @@ gulp.task("watch", () => {
   gulp.watch("src/img/icons/svg/*.svg", gulp.series("svgSprite"));
 
   gulp.watch("src/js/**/*.js", gulp.series("scripts"));
+
+  gulp.watch("src/js/**/*.vue", gulp.series("scripts"));
 });
 
 gulp.task("fonts", () => {
